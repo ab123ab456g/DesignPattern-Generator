@@ -1,5 +1,3 @@
-import variable
-
 class Generator_Parameter(object):
     def __init__(self):
         self.space = '    '
@@ -11,6 +9,8 @@ class  IGenerator(Generator_Parameter):
     def generator(self):
         pass
     def add(self, obj):
+        pass
+    def print(self, tab=False):
         pass
 
 class Generator(IGenerator):
@@ -26,23 +26,15 @@ class Generator(IGenerator):
     def add(self, *obj):
         for o in obj:
             self.generatorList.append(o)
-    def addList(self, variableList):
-        for name,value in variableList:
-            A = variable.G_Int()
-            A.name = name
-            A.value = value
-            self.add(A)
     def print(self, tab=False):
         for g in self.generatorList:
             if tab:
                 print(self.space + g.generate())
             else:
                 print(g.generate())
+    def addList(self, List):
+        pass
 
-class VariablesGenerator(Generator):
-    def __init__(self):
-        super(Generator,self).__init__()
-        self.variable = False
 
 
 #print('test Generator')

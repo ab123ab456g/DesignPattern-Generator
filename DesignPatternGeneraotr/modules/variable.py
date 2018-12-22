@@ -1,26 +1,14 @@
+from .base import Base
 # not support strange variable
+class Datatype:
+    datatype = ['int', 'str', 'None', 'list', 'dict', 'set', 'tuple', 'other']
 
-datatype = ['int', 'str', 'None', 'list', 'dict', 'set', 'tuple', 'other']
-
-class Base_Parameter(object):
-    def __init__(self):
-        self.name = ''
-        self.space = '    '
-
-class IBase(Base_Parameter):
-    def tab(self):
-        pass
-
-class Base(IBase):
-    def __init__(self):
-        super(IBase, self).__init__()
 
 class Variable_Parameter(Base):
     def __init__(self):
         super(Base, self).__init__()
         self.datatype = ''
         self.value = ''
-
 class IVariable(Variable_Parameter):
     def generate(self):
         pass
@@ -66,61 +54,28 @@ class G_Tuple(Variable):
         super(Variable,self).__init__()
         self.datatype = 'tuple'
 
-class G_other(Variable):
+class G_Other(Variable):
     def __init__(self):
         super(Variable,self).__init__()
         self.datatype = 'other'
 
-
-
-#test int
-# v =Variable()
-# v.name = 'abc'
-# v.datatype = 'int'
-# v.value = '53'
-# print(v.generate())
-
-#test string
-# v =Variable()
-# v.name = 'abc'
-# v.datatype = 'str'
-# v.value = '53'
-# print(v.generate())
-
-#test None
-# v =Variable()
-# v.name = 'abc'
-# v.datatype = 'str'
-# v.value = None
-# print(v.generate())
-
-#test list
-# v =Variable()
-# v.name = 'abc'
-# v.datatype = 'list'
-# v.value = []
-# print(v.generate())
-
-# #test dict
-# v =Variable()
-# v.name = 'abc'
-# v.datatype = 'dict'
-# v.value = {}
-# print(v.generate())
-
-# #test set
-# v =Variable()
-# v.name = 'abc'
-# v.datatype = 'set'
-# v.value = set({1:1,2:2})
-# print(v.generate())
-
-# #test tuple
-# v =Variable()
-# v.name = 'abc'
-# v.datatype = 'dict'
-# v.value = (1,2)
-# print(v.generate())
+class VariableFactory(object):
+    def setVariable(self):
+        return Variable()
+    def setInt(self):
+        return G_Int()
+    def setStr(self):
+        return G_Str()
+    def setList(self):
+        return G_List()
+    def setDict(self):
+        return G_Dict()
+    def setSet(self):
+        return G_Set()
+    def setTuple(self):
+        return G_Tuple()
+    def setOther(self):
+        return G_Other()
 
 # from datetime import datetime
 # # #test datetime
