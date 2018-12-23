@@ -56,3 +56,24 @@ class Generator(IGenerator):
 # g.addList(variableList)
 # g.print()
 # g.generator()
+
+
+
+
+
+
+
+# class IVariable(Variable_Parameter):
+#     def generate(self):
+#         pass
+
+# class Variable(IVariable):
+#     def __init__(self):
+#         super(IVariable, self).__init__()
+#     def generate(self):
+#         if self.datatype == 'str':
+#             return self.name + '='  + '\'' + str(self.value) + '\''
+#         elif self.datatype == 'set':
+#             return self.name + '='  + str(set(self.value))
+#         else:
+#             return self.name + '='  + str(self.value)

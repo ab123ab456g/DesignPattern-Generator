@@ -1,5 +1,12 @@
-import variable
-from generator import VariablesGenerator
+from . import base
+from . import basic
+
+class Variable(base.Base):
+    def __init__(self):
+        super(base.Base, self).__init__()
+        self.conditionList = []
+    def addCondition(self, condition):
+        self.condition.append(condition)
 
 class If_Parameter(variable.Base):
     def __init__(self):
