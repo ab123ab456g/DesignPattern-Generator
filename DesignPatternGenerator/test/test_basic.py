@@ -18,10 +18,10 @@ class Test_basic(unittest.TestCase):
     def test_keyword(self):
         datatype = ['int', 'str', 'None', 'list', 'dict', 'set', 'tuple', 'other']
         set_value_operaotr = ['=', '+=', '-=', '*=', '/=']
-        compute_operator = ['+', '-', '*'  '/' , '%','//', '**']
+        compute_operator = ['+', '-', '*',  '/' , '%','//', '**']
         compare_operaotor = ['==', '!=', '>', '>=', '<', '<=']
         logic_operator = ['and', 'or', 'not', 'is', 'is not','in']
-        bitwise_operator = ['&', '|', '~', 'a^b']
+        bitwise_operator = ['&', '|', '~', '^']
         structure = ['if', 'elif', 'else']
         function = ['def']
         class_ = ['class']

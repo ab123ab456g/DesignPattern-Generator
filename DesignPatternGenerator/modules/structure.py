@@ -1,67 +1,63 @@
 from . import base
 from . import basic
+from . import Operator
 
-class Variable(base.Base):
+
+class Structure(base.Base):
     def __init__(self):
-        super(base.Base, self).__init__()
-        self.conditionList = []
-    def addCondition(self, condition):
-        self.condition.append(condition)
+        super().__init__()
+        self.contentlist = []
+    def addContent(self, content):
+        self.contentlist.append(content)
 
-class If_Parameter(variable.Base):
+
+class If(Structure):
+    def __init__(self, condition=None):
+        super().__init__()
+        self.name = 'if'
+        if condition == None:
+            self.condition = self.createOperator()
+    def setCondition(self, condition=None):
+        if issubclass(type(condition), Operator.Operator):
+            if Operator.Operator.isSetValue(condition):
+                self.condition = condition
+    def createOperator(self):
+        O = Operator.Eq()
+        O.str1 = 'var1'
+        O.str2 = 'var2'
+        return O
+    def isSetValue(condition):
+        if condition.condition != '':
+            return True
+        else:
+            return False
+
+class Elif(If):
+    def __init__(self, condition=None):
+        self.conditionlist = []
+        super().__init__()
+        self.name = 'elif'
+        if condition != None:
+            self.condition.append(condition)
+        del self.condition
+    def addCondition(self, condition=None):
+        if issubclass(type(condition), Operator.Operator):
+            if Operator.Operator.isSetValue(condition):
+                self.conditionlist.append(condition)
+            else:
+                self.addEqToConditionList()
+        else:
+            self.addEqToConditionList()
+    def addEqToConditionList(self, condition=None):
+        if condition == None:
+            self.conditionlist.append(self.createOperator())
+    def isSetValue(condition):
+        if len(condition.conditionlist) != 0:
+            return True
+        else:
+            return False
+
+class Else(Structure):
     def __init__(self):
-        super(variable.Base, self).__init__()
-        self._if = False
-        self.condition = ''
-        self._else = False
-        self.variable = False
-        self.variableGenerator = VariablesGenerator()
-
-class I_If(If_Parameter):
-    def generate(self):
-        pass
-
-class If(I_If):
-    def __init__(self):
-        super(I_if, self).__init__()
-    def generate(self):
-        pass
-
-
-class Elif_Parameter(variable.Base):
-    def __init__(self):
-        super(variable.Base, self).__init__()
-        self._elif = False
-        self._elifList = []
-        self.conditionList = []
-        self.variable = False
-        self.variableGenerator = VariablesGenerator()
-
-class I_Elif(Elif_Parameter):
-    def generate(self):
-        pass
-
-class Elif(I_Elif):
-    def __init__(self):
-        super(I_if, self).__init__()
-    def generate(self):
-        pass
-
-class Else_Parameter(variable.Base):
-    def __init__(self):
-        super(variable.Base, self).__init__()
-        self._if = False
-        self.condition = ''
-        self._else = False
-        self.variable = False
-        self.variableGenerator = VariablesGenerator()
-
-class I_Else(Else_Parameter):
-    def generate(self):
-        pass
-
-class Else(I_Else):
-    def __init__(self):
-        super(I_if, self).__init__()
-    def generate(self):
-        pass
+        super().__init__()
+        self.name = 'else'

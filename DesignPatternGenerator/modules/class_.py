@@ -1,8 +1,8 @@
 from . import base
 from . import basic
 
-class Function(base.Base):
+class Class(base.Base):
     def __init__(self):
         super(base.Base, self).__init__()
         self.parameterlist = []
-        self.contentlist = []
+        self.methodList = []

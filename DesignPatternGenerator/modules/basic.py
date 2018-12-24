@@ -21,10 +21,10 @@ class Keyword(object):
     datatype = ['int', 'str', 'None', 'list', 'dict', 'set', 'tuple', 'other']
     #operator = [ , ]
     set_value_operaotr = ['=', '+=', '-=', '*=', '/=']
-    compute_operator = ['+', '-', '*'  '/' , '%','//', '**']
+    compute_operator = ['+', '-', '*',  '/' , '%','//', '**']
     compare_operaotor = ['==', '!=', '>', '>=', '<', '<=']
     logic_operator = ['and', 'or', 'not', 'is', 'is not','in']
-    bitwise_operator = ['&', '|', '~', 'a^b']
+    bitwise_operator = ['&', '|', '~', '^']
 
     structure = ['if', 'elif', 'else']
     function = ['def']

@@ -1,8 +1,8 @@
 from . import base
 from . import basic
 
-class Function(base.Base):
+class Loop(base.Base):
     def __init__(self):
         super(base.Base, self).__init__()
-        self.parameterlist = []
+        self.condition = ''
         self.contentlist = []
