@@ -12,6 +12,11 @@ class Variable(base.Base):
             return True
         else:
             return False
+    def isSameType(variable):
+        if issubclass(type(variable), Variable):
+            return True
+        else:
+            return False
 
 class G_Int(Variable):
     def __init__(self, operator='='):

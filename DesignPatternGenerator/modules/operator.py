@@ -12,6 +12,11 @@ class Operator(base.Base):
             return True
         else:
             return False
+    def isSameType(variable):
+        if issubclass(type(variable), Operator):
+            return True
+        else:
+            return False
 
 class Add(Operator):
     def __init__(self):

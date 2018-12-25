@@ -9,7 +9,16 @@ class Structure(base.Base):
         self.contentlist = []
     def addContent(self, content):
         self.contentlist.append(content)
-
+    def isSetValue(obj):
+        if obj.name != '' and obj.condition != '' :
+            return True
+        else:
+            return False
+    def isSameType(structure):
+        if issubclass(type(structure), Structure):
+            return True
+        else:
+            return False
 
 class If(Structure):
     def __init__(self, condition=None):
@@ -17,7 +26,9 @@ class If(Structure):
         self.name = 'if'
         if condition == None:
             self.condition = self.createOperator()
-    def setCondition(self, condition=None):
+        else:
+            self.condition = condition
+    def addCondition(self, condition=None):
         if issubclass(type(condition), Operator.Operator):
             if Operator.Operator.isSetValue(condition):
                 self.condition = condition

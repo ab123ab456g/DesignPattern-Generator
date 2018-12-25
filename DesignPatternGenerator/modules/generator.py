@@ -1,79 +1,46 @@
-class Generator_Parameter(object):
-    def __init__(self):
-        self.space = '    '
-        self.generatorList = []
-        self.filename = 'demo.py'
+from . import base
+from . import variable 
+from . import Operator
+from . import structure
+from . import function
 
-class  IGenerator(Generator_Parameter):
-    """docstring for  IGenerator"""
-    def generator(self):
-        pass
-    def add(self, obj):
-        pass
-    def print(self, tab=False):
-        pass
 
-class Generator(IGenerator):
+class G_Variable(base.Base_Generator):
     def __init__(self):
-        super(IGenerator,self).__init__()
-    def generator(self, tab=False):
-        with open(self.filename, 'w') as F:
-            for g in self.generatorList:
-                if tab:
-                    F.writelines(self.space + g.generate() + '\n')
+        super().__init__()
+    def generate(self, object):
+        if variable.Variable.isSetValue(object) and variable.Variable.isSameType(object):
+            if object.datatype == 'str' or object.datatype == '' or object.datatype == None:
+                return object.name + ' = ' + '\'' + str(object.value) + '\''
+            elif object.datatype == 'set':
+                if type(object.value)  == str:
+                    return object.name + ' = '  + str(set(object.value))
                 else:
-                    F.writelines(g.generate() + '\n')
-    def add(self, *obj):
-        for o in obj:
-            self.generatorList.append(o)
-    def print(self, tab=False):
-        for g in self.generatorList:
-            if tab:
-                print(self.space + g.generate())
+                    return object.name + ' = '  + str(set(object.value)) 
             else:
-                print(g.generate())
-    def addList(self, List):
-        pass
+                return object.name + ' = '  + str(object.value)
 
+class G_Operator(base.Base_Generator):
+    def __init__(self):
+        super().__init__()
+    def generate(self, object):
+        if Operator.Operator.isSetValue(object) and Operator.Operator.isSameType(object):
+            return object.str1 + ' ' + object.operator + ' ' + object.str2
 
+class G_Structure(base.Base_Generator):
+    def __init__(self):
+        super().__init__()
+        self.g_operator = G_Operator()
+    def generate(self, object):
+        if structure.Structure.isSetValue(object) and structure.Structure.isSameType(object):
+            condition = self.g_operator.generate(object.condition)
+            content = 'pass'
+            return 'if ' + condition + ' :\n' + content
 
-#print('test Generator')
-# variableList = [('a',1),('b',2),('c',3),('d',4)]
-# A = variable.G_Int()
-
-# g = Generator()
-# g.filename = 'demo.py'
-# g.addList(variableList)
-# g.print()
-# g.generator()
-
-#print('test VariablesGenerator')
-# variableList = [('a',1),('b',2),('c',3),('d',4)]
-# A = variable.G_Int()
-
-# g = VariablesGenerator()
-# g.filename = 'demo.py'
-# g.addList(variableList)
-# g.print()
-# g.generator()
-
-
-
-
-
-
-
-# class IVariable(Variable_Parameter):
-#     def generate(self):
-#         pass
-
-# class Variable(IVariable):
-#     def __init__(self):
-#         super(IVariable, self).__init__()
-#     def generate(self):
-#         if self.datatype == 'str':
-#             return self.name + '='  + '\'' + str(self.value) + '\''
-#         elif self.datatype == 'set':
-#             return self.name + '='  + str(set(self.value))
-#         else:
-#             return self.name + '='  + str(self.value)
+class G_Function(base.Base_Generator):
+    def __init__(self):
+        super().__init__()
+    def generate(self, object):
+        if function.Function.isSetValue(object) and function.Function.isSameType(object):
+            content = 'pass'
+            return 'def ' + object.name + '():\n' + content

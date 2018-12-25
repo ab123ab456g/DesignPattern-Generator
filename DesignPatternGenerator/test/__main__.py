@@ -9,7 +9,7 @@ from .test_function import Test_function
 from .test_class import Test_class
 from .test_designpattern import Test_designpattern
 
-from .test_generator_variable import Test_Generator_Variable
+from .test_generator import Test_Generator
 
 
 
@@ -29,7 +29,8 @@ Test_Job6 = unittest.TestLoader().loadTestsFromTestCase(Test_function)
 Test_Job7 = unittest.TestLoader().loadTestsFromTestCase(Test_class)
 Test_Job8 = unittest.TestLoader().loadTestsFromTestCase(Test_designpattern)
 # Test_Job9 = unittest.TestLoader().loadTestsFromTestCase(Test_operator)
-Test_Job10 = unittest.TestLoader().loadTestsFromTestCase(Test_Generator_Variable)
+Test_Job10 = unittest.TestLoader().loadTestsFromTestCase(Test_Generator)
+# Test_Job11 = unittest.TestLoader().loadTestsFromTestCase(Test_Generator_Variable)
 
 suite.addTests(Test_Job0)
 suite.addTests(Test_Job1)

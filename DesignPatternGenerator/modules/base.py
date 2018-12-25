@@ -1,7 +1,9 @@
 class Base(object):
     def __init__(self):
         self.name = ''
-    def isSetVaule(object):
+    def isSetVaule(self, obj):
+        pass
+    def isSameType(self, obj):
         pass
 
 class Base_Generator(object):
