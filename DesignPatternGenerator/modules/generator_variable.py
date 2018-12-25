@@ -1,12 +1,17 @@
-from .generator import Generator
+from . import base
+from . import variable 
 
-class GeneratorVariable(object):
+class GeneratorVariable(base.Base_Generator):
     def __init__(self):
         super().__init__()
-    def addList(self, List):
-        for name, datatype, value in List:
-            self.variable = self.f.setVariable()
-            self.variable.name = name
-            self.variable.datatype = datatype
-            self.variable.value = value
-            self.add(self.variable)
+    def generate(self, object):
+        if variable.Variable.isSetValue(object):
+            if object.datatype == 'str' or object.datatype == '' or object.datatype == None:
+                return object.name + ' = ' + '\'' + str(object.value) + '\''
+            elif object.datatype == 'set':
+                if type(object.value)  == str:
+                    return object.name + ' = '  + str(set(object.value))
+                else:
+                    return object.name + ' = '  + str(set(object.value)) 
+            else:
+                return object.name + ' = '  + str(object.value)
