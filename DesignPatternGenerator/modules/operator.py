@@ -1,22 +1,5 @@
-from . import base
 from . import basic
-
-class Operator(base.Base):
-    def __init__(self):
-        super(base.Base, self).__init__()
-        self.str1 = ''
-        self.operator = ''
-        self.str2 = ''
-    def isSetValue(Operator):
-        if Operator.str1 != '' and Operator.str2 != '' and Operator.operator != '':
-            return True
-        else:
-            return False
-    def isSameType(variable):
-        if issubclass(type(variable), Operator):
-            return True
-        else:
-            return False
+from .base import Operator
 
 class Add(Operator):
     def __init__(self):

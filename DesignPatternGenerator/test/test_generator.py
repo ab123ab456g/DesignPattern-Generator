@@ -1,15 +1,18 @@
 import unittest
 from ..modules.basic import Keyword
-from ..modules.variable import Variable
-from ..modules.Operator import Operator
+from ..modules.base import Variable
+from ..modules.base import Operator
+from ..modules.base import Function
+from ..modules.base import Class
+
 from ..modules.structure import If,Elif,Else
-from ..modules.function import Function
 
 
 from ..modules.generator import G_Variable
 from ..modules.generator import G_Operator
 from ..modules.generator import G_Structure
 from ..modules.generator import G_Function
+from ..modules.generator import G_Class
 
 
 
@@ -70,6 +73,13 @@ class Test_Generator(unittest.TestCase):
         F = Function()
         F.name = 'test_fun'
         self.assertEqual(G.generate(F), 'def test_fun():\npass')
+    def test_GeneratorClass(self):
+        G = G_Class()
+        C = Class()
+        C.name = 'test_class'
+        self.assertEqual(G.generate(C), 'class test_class:\npass')
+        C.inherit_class = 'Base()'
+        self.assertEqual(G.generate(C), 'class test_class(Base()):\npass')
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,22 +1,5 @@
-from . import base
 from . import basic
-
-class Variable(base.Base):
-    def __init__(self):
-        super().__init__()
-        self.datatype = ''
-        self.value = ''
-        self.operator = ''
-    def isSetValue(variable):
-        if variable.name != '' and variable.value != '' and variable.operator != '':
-            return True
-        else:
-            return False
-    def isSameType(variable):
-        if issubclass(type(variable), Variable):
-            return True
-        else:
-            return False
+from .base import Variable 
 
 class G_Int(Variable):
     def __init__(self, operator='='):

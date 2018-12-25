@@ -11,15 +11,6 @@ O2.operator = '=='
 
 class Test_structure(unittest.TestCase):
     def test_structure(self):
-        S = structure.Structure()
-        self.assertEqual(S.name,'')
-        self.assertEqual(S.contentlist,[])
-        S.addContent('content1')
-        S.addContent('content2')
-        S.addContent('content3')
-        S.addContent('content4')
-        self.assertEqual(S.contentlist,['content1', 'content2', 'content3', 'content4'])
-
         S = structure.If()
         S.addCondition()
         self.assertEqual(S.name,'if')

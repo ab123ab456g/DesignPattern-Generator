@@ -1,24 +1,6 @@
-from . import base
+from .base import Structure
+from .base import Operator
 from . import basic
-from . import Operator
-
-
-class Structure(base.Base):
-    def __init__(self):
-        super().__init__()
-        self.contentlist = []
-    def addContent(self, content):
-        self.contentlist.append(content)
-    def isSetValue(obj):
-        if obj.name != '' and obj.condition != '' :
-            return True
-        else:
-            return False
-    def isSameType(structure):
-        if issubclass(type(structure), Structure):
-            return True
-        else:
-            return False
 
 class If(Structure):
     def __init__(self, condition=None):
@@ -29,13 +11,14 @@ class If(Structure):
         else:
             self.condition = condition
     def addCondition(self, condition=None):
-        if issubclass(type(condition), Operator.Operator):
-            if Operator.Operator.isSetValue(condition):
+        if Operator.isSameType(condition):
+            if Operator.isSetValue(condition):
                 self.condition = condition
     def createOperator(self):
-        O = Operator.Eq()
+        O = Operator()
         O.str1 = 'var1'
         O.str2 = 'var2'
+        O.operator = '=='
         return O
     def isSetValue(condition):
         if condition.condition != '':
@@ -52,8 +35,8 @@ class Elif(If):
             self.condition.append(condition)
         del self.condition
     def addCondition(self, condition=None):
-        if issubclass(type(condition), Operator.Operator):
-            if Operator.Operator.isSetValue(condition):
+        if issubclass(type(condition), Operator):
+            if Operator.isSetValue(condition):
                 self.conditionlist.append(condition)
             else:
                 self.addEqToConditionList()

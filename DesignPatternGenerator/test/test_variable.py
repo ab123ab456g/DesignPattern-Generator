@@ -11,10 +11,6 @@ from ..modules.variable import VariableFactory_divi_equal
 
 class Test_variable(unittest.TestCase):
     def test_Variable(self):
-        v = Variable()
-        self.assertEqual(v.datatype, '')
-        self.assertEqual(v.name, '')
-        self.assertEqual(v.value, '')
         g = G_Int()
         self.assertEqual(g.datatype, 'int')
         self.assertEqual(g.name, '')

@@ -4,10 +4,6 @@ from ..modules import Operator
 
 class Test_operator(unittest.TestCase):
     def test_Operator(self):
-        O = Operator.Operator()
-        self.assertEqual(O.str1,'')
-        self.assertEqual(O.operator,'')
-        self.assertEqual(O.str2,'')
         O = Operator.Add()
         self.assertEqual(O.operator,'+')
         self.assertEqual(O.str2,'')
