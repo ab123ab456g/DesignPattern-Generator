@@ -1,5 +1,5 @@
 import unittest
-from ..modules import basic
+from ..modules.datatypes import basic
 
 class Test_basic(unittest.TestCase):
     def test_language(self):

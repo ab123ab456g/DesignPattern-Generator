@@ -1,6 +1,6 @@
 import unittest
 
-from ..modules import designpattern
+from ..modules.datatypes import designpattern
 class Test_designpattern(unittest.TestCase):
     def test_DesignPattern(self):
         pass

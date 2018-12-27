@@ -11,8 +11,8 @@ class If(Structure):
         else:
             self.condition = condition
     def addCondition(self, condition=None):
-        if Operator.isSameType(condition):
-            if Operator.isSetValue(condition):
+        if Operator().isSameType(condition):
+            if Operator().isSetValue(condition):
                 self.condition = condition
     def createOperator(self):
         O = Operator()

@@ -1,6 +1,6 @@
 import unittest
 
-from ..modules import Operator
+from ..modules.datatypes import Operator
 
 class Test_operator(unittest.TestCase):
     def test_Operator(self):

@@ -1,2 +1,15 @@
 <?xml version="1.0"?>
-<variable name='abc' datatype='int' operation='='>123</variable >
+<root>
+    <variable name='abc' datatype='int' operation='='>123</variable >
+    <class name='test'>
+        <variable name='abc' datatype='int' operation='='>123</variable >
+        <variable name='abc2' datatype='int' operation='='>123</variable >
+        <function name="method1" parameterlist="a,b,c">
+            <if str1="a" str2="b" operator=">">
+                <call name="fun1" parameterlist="a,b,c"/>
+            </if>
+        </function>
+        <function name="method2" parameterlist="a,b,c"></function>
+        <function name="method3" parameterlist="a,b,c"></function>
+    </class>
+</root>
